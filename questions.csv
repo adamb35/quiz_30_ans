@@ -1,6 +1,6 @@
-Question,Proposition_1,Proposition_2,Proposition_3,Proposition_4,Réponse
-En quelle année fut créée l'association culture and Co?,2000,2005,2010,2015,2000
-Où eut lieu la 1ere journée d'intégration ?,Bain de Bretagne,Rennes,Saint Malo,Le Theil,Rennes
-Quand eut lieu la 1ere journée d'intégration ?,1995,1998,2001,2004,1995
-qu'y avait il dans la salle qui est aujourd'hui celle de la pastorale ?,A,B,C,D,A
-qu'enseignait M Ménard directeur adjoint avant Mme Bernier ?,PC,SVT,Maths,HG,PC
+Question,Option 1,Option 2,Option 3,Option 4,Correct Answer
+En quelle année fut créée l'association culture and Co?,2000,2005,2010,2015,1
+Où eut lieu la 1ere journée d'intégration ?,Bain de Bretagne,Rennes,Saint Malo,Le Theil,2
+Quand eut lieu la 1ere journée d'intégration ?,1995,1998,2001,2004,3
+qu'y avait il dans la salle qui est aujourd'hui celle de la pastorale ?,A,B,C,D,4
+qu'enseignait M Ménard directeur adjoint avant Mme Bernier ?,PC,SVT,Maths,HG,1
