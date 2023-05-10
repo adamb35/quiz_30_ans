@@ -2,6 +2,7 @@
 Papa.parse("questions.csv", {
   download: true,
   header: true,
+  skipEmptyLines: true,
   complete: function(results) {
     var questions = results.data;
     var totalQuestions = questions.length;
