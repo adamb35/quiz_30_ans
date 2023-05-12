@@ -15,14 +15,13 @@ Papa.parse("questions.csv", {
       var output = [];
       for(var i=0; i<questions.length; i++) {
         output.push(
-          '<div class="ensemble">' + 
           '<div class="question">' + questions[i].question + '</div>' +
           '<div class="options">' +
           '<label><input type="radio" name="question' + i + '" value="A">' + questions[i].optionA + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="B">' + questions[i].optionB + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="C">' + questions[i].optionC + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="D">' + questions[i].optionD + '</label>' +
-          '</div>'+'</div>'
+          '</div>'
         );
       }
       quizContainer.innerHTML = output.join('');
