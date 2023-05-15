@@ -48,6 +48,8 @@ Papa.parse("questions.csv", {
 
     // Show the user's score and correct answers
     function showResults() {
+      var nomDisplay = document.getElementById("nom");
+      var prenomDisplay = document.getElementById("prenom");
       var scoreDisplay = document.getElementById("score");
       var results = getScore();
       var score = results[0];
