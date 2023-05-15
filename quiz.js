@@ -16,7 +16,10 @@ Papa.parse("questions.csv", {
       for(var i=0; i<questions.length; i++) {
         output.push(
           '<div class="question-box">' +
-          '<div class="question">' + questions[i].question + '</div>' +
+          '<div class="question">' +
+          '<span class="question-number">' + (i + 1) + '. </span>' + 
+        questions[i].question +
+         '</div>' +
           '<div class="options">' +
           '<label><input type="radio" name="question' + i + '" value="A">' + questions[i].optionA + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="B">' + questions[i].optionB + '</label>' +
