@@ -24,7 +24,7 @@ Papa.parse("questions.csv", {
           '<label><input type="radio" name="question' + i + '" value="B">' + questions[i].optionB + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="C">' + questions[i].optionC + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="D">' + questions[i].optionD + '</label>' +
-        '</div>'
+        '</div>' +
         '</div>'
    );
  }
