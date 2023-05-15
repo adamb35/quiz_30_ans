@@ -148,10 +148,11 @@ footer {
 	color: #999;
 	margin-top: 20px;
 }
+
 .question-box {
-  background-color: #808080;
+  background-color: #DCDCDC;
   border-radius: 25% 10%;
-  border: 5px solid black;
+  border: 1px solid black;
   padding: 10px;
   margin-bottom: 10px;
 }
