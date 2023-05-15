@@ -11,24 +11,23 @@ Papa.parse("questions.csv", {
     var quizContainer = document.getElementById("quiz-container");
     var submitButton = document.getElementById("submit-button");
 
-   function showQuestions() {
-    var output = [];
-    for(var i=0; i<questions.length; i++) {
-      output.push(
-        '<div class="question-box">' +
-        '<div class="question">' + (i+1) + '. ' + questions[i].question + '</div>' +
-        '<div class="options">' +
+    function showQuestions() {
+      var output = [];
+      for(var i=0; i<questions.length; i++) {
+        output.push(
+          '<div class="question-box">' +
+          '<div class="question">' + questions[i].question + '</div>' +
+          '<div class="options">' +
           '<label><input type="radio" name="question' + i + '" value="A">' + questions[i].optionA + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="B">' + questions[i].optionB + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="C">' + questions[i].optionC + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="D">' + questions[i].optionD + '</label>' +
-        '</div>' +
-        '</div>'
+          '</div>' +
+          '</div>'
         );
-      }  
+      }
       quizContainer.innerHTML = output.join('');
-}
-
+    }
     showQuestions();
 
     // Collect the user's answers and calculate the score
@@ -49,21 +48,19 @@ Papa.parse("questions.csv", {
 
     // Show the user's score and correct answers
     function showResults() {
-      var nomDisplay = document.getElementById("nom");
-      var prenomDisplay = document.getElementById("prenom");
       var scoreDisplay = document.getElementById("score");
       var results = getScore();
       var score = results[0];
       var answers = results[1];
-      scoreDisplay.innerHTML = "Vous avez " + score + " bonnes réponses sur " + totalQuestions + ".";
+      scoreDisplay.innerHTML = "You scored " + score + " out of " + totalQuestions + ".";
 
       for(var i=0; i<questions.length; i++) {
         var questionContainer = quizContainer.querySelectorAll('.question')[i];
         var answerContainer = document.createElement('div');
         if(answers[i] === questions[i].answer) {
-          answerContainer.innerHTML = "Votre réponse: " + answers[i];
+          answerContainer.innerHTML = "Your answer: " + answers[i];
         } else {
-          answerContainer.innerHTML = "Votre réponse: " + answers[i] + ". Réponse correcte: " + questions[i].answer;
+          answerContainer.innerHTML = "Your answer: " + answers[i] + ". Correct answer: " + questions[i].answer;
         }
         questionContainer.appendChild(answerContainer);
       }
@@ -73,5 +70,3 @@ Papa.parse("questions.csv", {
     submitButton.addEventListener("click", showResults);
   }
 });
-
-  }
