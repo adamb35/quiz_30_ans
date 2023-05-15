@@ -51,25 +51,7 @@ Papa.parse("questions.csv", {
       var scoreDisplay = document.getElementById("score");
       var results = getScore();
       var score = results[0];
-      var scoreData = JSON.stringify(score);
       var answers = results[1];
-      
-     // Send a POST request to the Google Apps Script web app URL
-  fetch('https://script.google.com/macros/s/AKfycbz51sUYdeIy9sG4katAiEDwMz2WVELghr9t-z1LgAw6jv9CxjQAVwbs3O_zSyiOl3Q/exec', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: scoreData
-  })
-  .then(function(response) {
-    // Handle the response if needed
-    console.log('Results sent successfully!');
-  })
-  .catch(function(error) {
-    // Handle any errors that occur during the request
-    console.error('Error sending results:', error);
-  });
       scoreDisplay.innerHTML = "You scored " + score + " out of " + totalQuestions + ".";
 
       for(var i=0; i<questions.length; i++) {
@@ -88,3 +70,33 @@ Papa.parse("questions.csv", {
     submitButton.addEventListener("click", showResults);
   }
 });
+
+    function postResultsToGitHub(results) {
+    // Convert the results to CSV format
+    var csvContent = "data:text/csv;charset=utf-8,"
+    + results.map(result => Object.values(result).join(',')).join('\n');
+  
+    // Create a Blob from the CSV content
+    var blob = new Blob([csvContent], { type: 'text/csv' });
+  
+    // Create a FormData object and append the Blob
+    var formData = new FormData();
+    formData.append('file', blob, 'results.csv');
+  
+    // Make a POST request to the GitHub API using fetch
+    fetch('https://api.github.com/repos/adamb35/quiz_30_ans/contents/results.csv', {
+      method: 'PUT',
+      headers: {
+        'Authorization': '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',
+      },
+      body: formData
+    })
+    .then(function(response) {
+      // Handle the response if needed
+      console.log('Results posted to GitHub successfully!');
+    })
+    .catch(function(error) {
+      // Handle any errors that occur during the request
+      console.error('Error posting results to GitHub:', error);
+    });
+  }
