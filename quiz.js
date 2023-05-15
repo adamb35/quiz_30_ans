@@ -15,7 +15,7 @@ Papa.parse("questions.csv", {
     var output = [];
     for(var i=0; i<questions.length; i++) {
       output.push(
-        '<div class="question-box">'
+        '<div class="question-box">' +
         '<div class="question">' + 
           (i+1) + '. ' + questions[i].question + 
         '</div>' +
@@ -28,6 +28,8 @@ Papa.parse("questions.csv", {
         '</div>'
    );
  }
+
+     
  quizContainer.innerHTML = output.join('');
 }
 
