@@ -86,6 +86,7 @@ Papa.parse("questions.csv", {
     formData.append('file', blob, 'results.csv');
   
     // Make a POST request to the GitHub API using fetch
+    console.log('Debug:', results);
     fetch('https://api.github.com/repos/adamb35/quiz_30_ans/contents/results.csv', {
       method: 'PUT',
       headers: {
