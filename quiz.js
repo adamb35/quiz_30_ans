@@ -51,7 +51,25 @@ Papa.parse("questions.csv", {
       var scoreDisplay = document.getElementById("score");
       var results = getScore();
       var score = results[0];
+      var scoreData = JSON.stringify(score);
       var answers = results[1];
+      
+     // Send a POST request to the Google Apps Script web app URL
+  fetch('https://script.google.com/macros/s/AKfycbz51sUYdeIy9sG4katAiEDwMz2WVELghr9t-z1LgAw6jv9CxjQAVwbs3O_zSyiOl3Q/exec', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: scoreData
+  })
+  .then(function(response) {
+    // Handle the response if needed
+    console.log('Results sent successfully!');
+  })
+  .catch(function(error) {
+    // Handle any errors that occur during the request
+    console.error('Error sending results:', error);
+  });
       scoreDisplay.innerHTML = "You scored " + score + " out of " + totalQuestions + ".";
 
       for(var i=0; i<questions.length; i++) {
