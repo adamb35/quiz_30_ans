@@ -11,26 +11,24 @@ Papa.parse("questions.csv", {
     var quizContainer = document.getElementById("quiz-container");
     var submitButton = document.getElementById("submit-button");
 
-    function showQuestions() {
-      var output = [];
-      for(var i=0; i<questions.length; i++) {
-        output.push(
-          '<div class="question-box">' +
-          '<div class="question">' +
-          '<span class="question-number">' + (i + 1) + '. </span>' + 
-        questions[i].question +
-         '</div>' +
-          '<div class="options">' +
+   function showQuestions() {
+    var output = [];
+    for(var i=0; i<questions.length; i++) {
+      output.push(
+        '<div class="question">' + 
+          (i+1) + '. ' + questions[i].question + 
+        '</div>' +
+        '<div class="options">' +
           '<label><input type="radio" name="question' + i + '" value="A">' + questions[i].optionA + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="B">' + questions[i].optionB + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="C">' + questions[i].optionC + '</label>' +
           '<label><input type="radio" name="question' + i + '" value="D">' + questions[i].optionD + '</label>' +
-          '</div>' +
-          '</div>'
-        );
-      }
-      quizContainer.innerHTML = output.join('');
-    }
+        '</div>'
+   );
+ }
+ quizContainer.innerHTML = output.join('');
+}
+
     showQuestions();
 
     // Collect the user's answers and calculate the score
