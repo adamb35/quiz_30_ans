@@ -59,15 +59,15 @@ Papa.parse("questions.csv", {
       var results = getScore();
       var score = results[0];
       var answers = results[1];
-      scoreDisplay.innerHTML = "You scored " + score + " out of " + totalQuestions + ".";
+      scoreDisplay.innerHTML = "Vous avez " + score + " bonnes réponses sur " + totalQuestions + ".";
 
       for(var i=0; i<questions.length; i++) {
         var questionContainer = quizContainer.querySelectorAll('.question')[i];
         var answerContainer = document.createElement('div');
         if(answers[i] === questions[i].answer) {
-          answerContainer.innerHTML = "Your answer: " + answers[i];
+          answerContainer.innerHTML = "Votre réponse: " + answers[i];
         } else {
-          answerContainer.innerHTML = "Your answer: " + answers[i] + ". Correct answer: " + questions[i].answer;
+          answerContainer.innerHTML = "Votre réponse: " + answers[i] + ". Réponse correcte: " + questions[i].answer;
         }
         questionContainer.appendChild(answerContainer);
       }
@@ -78,33 +78,4 @@ Papa.parse("questions.csv", {
   }
 });
 
-    function postResultsToGitHub(results) {
-    // Convert the results to CSV format
-    var csvContent = "data:text/csv;charset=utf-8,"
-    + results.map(result => Object.values(result).join(',')).join('\n');
-  
-    // Create a Blob from the CSV content
-    var blob = new Blob([csvContent], { type: 'text/csv' });
-  
-    // Create a FormData object and append the Blob
-    var formData = new FormData();
-    formData.append('file', blob, 'results.csv');
-  
-    // Make a POST request to the GitHub API using fetch
-    console.log('Debug:', results);
-    fetch('https://api.github.com/repos/adamb35/quiz_30_ans/contents/results.csv', {
-      method: 'PUT',
-      headers: {
-        'Authorization': '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',
-      },
-      body: formData
-    })
-    .then(function(response) {
-      // Handle the response if needed
-      console.log('Results posted to GitHub successfully!');
-    })
-    .catch(function(error) {
-      // Handle any errors that occur during the request
-      console.error('Error posting results to GitHub:', error);
-    });
   }
