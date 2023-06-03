@@ -52,7 +52,7 @@ Papa.parse("questions.csv", {
       var results = getScore();
       var score = results[0];
       var answers = results[1];
-      scoreDisplay.innerHTML = "You scored " + score + " out of " + totalQuestions + ".";
+      scoreDisplay.innerHTML = "Vous avez réussi " + score + " questions sur " + totalQuestions + ".";
 
       for(var i=0; i<questions.length; i++) {
         var questionContainer = quizContainer.querySelectorAll('.question')[i];
